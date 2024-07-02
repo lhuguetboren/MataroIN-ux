@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Viatges Mataró INT</title>
+<link href="css/index.css" rel="stylesheet">
+  </head>
+  <body class="text-center">
+    <form class="registrase"  method="post">
+    <img class="foto" src="./fotos/Viatges Mataro INT.png" alt="">
+    <h1>Crear cuenta Cliente</h1>
+    <br>
+    <form action="" method="post">
+      <label for="usuario" class="sr-only">Usuario :</label>
+      <input type="text" name="usuari" maxlength="8" required >
+      <br/><br/>
+      <label for="correo" class="sr-only">Correo :</label>
+      <input type="text" name="correo">
+      <br/><br/>
+      <label for="nom" class="sr-only">Nombre :</label>
+      <input type="text" name="nom"  required >
+      <br/><br/>
+      <label for="apellido" class="sr-only">Apellido :</label>
+      <input type="text" name="apellido" maxlength="8">
+      <br/><br/>
+      <label for="Ciudad" class="sr-only">Ciudad :</label>
+      <input type="text" name="Ciudad"  required >
+      <br/><br/>
+      <label for="dirección" class="sr-only">Direccion :</label>
+      <input type="text" name="direccion"  required >
+      <br/><br/>
+      <label for="pasword" class="sr-only">Contraseña :</label>
+      <input type="password" name="contraseña" maxlength="8">
+      <br/><br/>
+      <label for="opciones" class="sr-only">Pais :</label>
+      <select name="opciones">
+      <option value="opcion1">España</option>
+      <option value="opcion2">Italia</option>
+      <option value="opcion3">Alemania</option>
+      <option value="opcion3">Francia</option>
+      <option value="opcion3">Inglaterra</option>
+      </select>
+      
+      <br/><br/>
+      <input type="submit" name="submit" value="Registrarme" style="border-radius: 25px;">
+    <input type="reset" name="clear" value="Borrar" style="border-radius: 25px;">
+    <br/><br/>
+    <input type="submit" name="Volver" formaction="LoginC.html" value="Volver" style="border-radius: 25px;">
+    </form>
+    
+    
+    </form>
+</body>
+</html>

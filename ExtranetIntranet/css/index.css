@@ -1,0 +1,63 @@
+body.text-center{
+background-color: rgb(255, 198, 129);
+}
+
+form.form-signin{
+text-align: center;
+font-family:'Carton Six', sans-serif;
+color: black;
+}
+img.foto {
+width: 25%;
+height: 25%;
+text-align: center;
+padding-top: 25px;
+border-radius: 50%;
+}
+label.sr-only{
+padding-bottom: 25px;
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+form.registrase{
+  text-align: center;
+  font-family:"Carton Six', sans-serif";
+  color: black;
+  }
+div.crea{
+  text-align: center;
+  color: white;
+}
+.boton{
+border: 1px solid #2e518b;
+padding: 10px;
+background-color: #2e518b;
+color: #ffffff;
+text-decoration: none;
+text-transform: uppercase;
+font-family: 'Carton Six', sans-serif;
+border-radius: 50px;
+}
+
+@font-face {
+  font-family: "myFont";
+  src: url("SpringtownMarket.otf");
+}
+p.años{
+  font-family: 'Carton Six', sans-serif;
+  color: rgb(89, 0, 255);
+
+}
+h1{
+  text-align: center;
+  font-family:"myfont";
+  color: rgb(89, 0, 255);
+}
