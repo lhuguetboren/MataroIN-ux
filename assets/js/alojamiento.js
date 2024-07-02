@@ -2,6 +2,8 @@ var hotelData=[]
 var controlCargado=0
 //funciones del buscador
 
+
+
 function buscadorEstrellas(){
     // Aquí puedes implementar la lógica para procesar la búsqueda con los valores ingresados en el formulario
 
