@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nombre de tu Sitio - Página de Inicio</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/personalizacionMUDO.css?version=1">
+
+    <script src="../assets/js/variablesComunes.js"></script>
+    <script src="../assets/js/datos.js?v=2"></script>
+    <script src="../assets/js/buscador.js?v=2"></script>
+    <script src="../assets/js/servicios.js?v=2"></script>
+    <script src="../assets/js/cookies.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        .main-content {
+            display: flex;
+            width: 100%;
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 50%;
+            overflow: hidden;
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .slide {
+            min-width: 300px;
+            min-height: 300px;
+            margin: 10px;
+            border: 1px solid #000;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .PUEBLO {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            background-color: #f79e31;
+            box-sizing: border-box;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .PUEBLO .nombre {
+            margin-top: 10px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .PUEBLO .img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .carousel-container .prev,
+        .carousel-container .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .carousel-container .prev {
+            left: 10px;
+        }
+
+        .carousel-container .next {
+            right: 10px;
+        }
+
+        .info-content {
+            width: 50%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .widget-container {
+            width: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        iframe {
+            width: 100%;
+            height: 300px;
+            border: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <header id="headerJS">
+    </header>
+
+    <main>
+        <div class="main-content">
+            <div class="carousel-container">
+                <button class="prev" onclick="moveCarousel(-1)">&#10094;</button>
+                <ul id="listaPueblos" class="carousel"></ul>
+                <button class="next" onclick="moveCarousel(1)">&#10095;</button>
+            </div>
+            <div class="info-content">
+                <h1>El Tiempo</h1>
+                <div class="widget-container">
+                    <iframe class="tiempo" src="https://www.meteo.cat/" frameborder="0" width="100%" height="250"
+                        allowtransparency="true">
+                    </iframe>
+                </div>
+                <div class="sub-col">Mapa</div>
+                <div class="sub-col">Tiempo y Wiki</div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Pie de página -->
+    <footer id="footerJS">
+    </footer>
+    <!-- Pie de página -->
+
+    <script src="../assets/cabecerapie/cabecerapie.js"></script>
+    <script>
+        let currentSlide = 0;
+
+        function main() {
+            document.getElementById("nombre").innerHTML = getCookie("username");
+            arrayAULaAccion('listaPueblos', Municipios.pueblo, 'ifsrc');
+        }
+
+        function arrayAULaAccion(ulc, opciones, accion) {
+            let selectHTML = '';
+            opciones.forEach(opcion => {
+                selectHTML += `
+                    <li class="slide">
+                        <div class="PUEBLO">
+                            <img src="${opcion.trim()}.jpeg" class="img" alt="${opcion.trim()}">
+                            <div class="nombre">${opcion}</div>
+                        </div>
+                    </li>
+                `;
+            });
+            document.getElementById(ulc).innerHTML = selectHTML;
+        }
+
+        function ifsrc(pueblo) {
+            document.getElementById("wikipedia").src = "https://es.wikipedia.org/wiki/" + pueblo;
+            document.getElementById("tituloPueblo").textContent = pueblo;
+        }
+
+        function moveCarousel(direction) {
+            const carousel = document.querySelector('.carousel');
+            const slides = document.querySelectorAll('.slide');
+            const slideWidth = slides[0].offsetWidth + 20; // Including margin
+            currentSlide += direction;
+
+            if (currentSlide < 0) {
+                currentSlide = slides.length - 1;
+            } else if (currentSlide >= slides.length) {
+                currentSlide = 0;
+            }
+
+            const offset = -currentSlide * slideWidth;
+            carousel.style.transform = `translateX(${offset}px)`;
+        }
+
+        window.onload = main;
+    </script>
+</body>
+
+</html>

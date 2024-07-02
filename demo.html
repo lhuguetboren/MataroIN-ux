@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="description" content="Examples of desoSlide jQuery plugin" />
+    <meta name="author" content="Sylvain, Jaoued" />
+
+    <title>Demo &middot; desoSlide, a slideshow jQuery plugin</title>
+
+    <link rel="icon" href="assets/img/favicon.png">
+
+    <!--[if lt IE 9]>
+            <script src="assets/js/vendor/html5shiv/html5shiv.min.js"></script>
+        <![endif]-->
+
+    <!-- Enlace al archivo de la tipografía Roboto -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/personalizacionMUDO.css?version=1"> -->
+    <!-- -->
+
+    <link rel="stylesheet" href="assets/css/app/main.css" />
+    <link rel="stylesheet" href="assets/css/app/views/demo.css" />
+
+    <link rel="stylesheet" href="assets/css/vendor/magic/magic.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/animate/animate.min.css">
+
+    <link rel="stylesheet" href="assets/css/jquery.desoslide.css">
+
+    <!-- Carga de datos -->
+    <script src="assets/js/variablesComunes.js"></script>
+    <script src="assets/js/datos.js?v=2"></script>
+    <!-- -->
+    <!-- MataroIN  -->
+    <script src="assets/js/buscador.js?v=2"></script>
+    <script src="assets/js/servicios.js?v=2"></script>
+    <script src="assets/js/cookies.js"></script>
+
+</head>
+
+<body>
+
+    <div class="row">
+
+        <!-- Result 3 -->
+        <article class="col-lg-7 col-md-7">
+            <h4>Result</h4>
+
+            <div class="row">
+                <div id="slideshow3" class="col-lg-11 col-md-10"></div>
+                <div class="col-lg-1 col-md-2 text-center">
+                    <ul id="slideshow3_thumbs" class="desoslide-thumbs-vertical list-inline" >
+                       
+                    </ul>
+                </div>
+            </div>
+        </article>
+
+        <!-- Code 3 -->
+        <article class="col-lg-offset-1 col-md-offset-1 col-lg-4 col-md-4">
+            <h4>Code</h4>
+            <pre><code>$('#slideshow').desoSlide({
+            thumbs: $('#slideshow_thumbs li > a'),
+            auto: {
+            start: true
+            },
+            first: 1,
+            interval: 6000
+            });</code></pre>
+        </article>
+    </div>
+
+    <!-- Libreria -->
+    <script src="assets/js/vendor/jquery/jquery.js"></script>
+    <script src="assets/js/vendor/bootstrap/bootstrap.min.js"></script>
+    <script src="assets/js/vendor/highlight/highlight.pack.js"></script>
+    <script src="assets/js/jquery.desoslide.min.js"></script>
+
+    <script>
+
+        //funcion de inicio de la página
+        function main() {
+            // document.getElementById("nombre").innerHTML = getCookie("username");
+            // arrayAselect("idiomas", Idiomas.idioma);
+            // arrayAselect("destino", Municipios.pueblo);
+            // imagenCambiante();
+            // document.getElementById("search-form").addEventListener("submit", function (event) {
+            //     event.preventDefault();
+            //     busquedaPrincipal();
+            // });
+            ListadoImagenes();
+            $.getScript("assets/js/app/demo.js", function() { 
+// Código a ejecutar después de que se cargue el script 
+console.log("cargado");
+}
+);
+        }
+
+        function ListadoImagenes() {
+            let ListaDeImagenes = document.getElementById('slideshow3_thumbs');
+            // let ListaDeImagenes1 = document.getElementById('ListaDeImagenes1');
+            // let ListaDeImagenes2 = document.getElementById('ListaDeImagenes2');
+            // let ListaDeImagenes3 = document.getElementById('ListaDeImagenes3');
+            let ListaDeImagenesLargo = Biblioteca.fotos.foto.length
+            let mostrarImagen = ''
+
+            // console.log  (Biblioteca.fotos.foto[0].id)
+
+            for (let i = 4; i < ListaDeImagenesLargo; i++) {
+                console.log(Biblioteca.fotos.foto[i].filename);
+                mostrarImagen += '<li>' +
+                    '<a href="' + Biblioteca.fotos.foto[i].filename + '" data-desoslide-index="'+ i + '">' +
+                    '<img style="width: 200px;" src="' + Biblioteca.fotos.foto[i].filename + '" alt="' + Biblioteca.fotos.foto[i].title + '">' +
+                    '</a>' +
+                    '</li>';
+            }
+            ListaDeImagenes.insertAdjacentHTML('beforeend', mostrarImagen);
+        }
+
+    </script>
+
+</body>
+
+</html>
